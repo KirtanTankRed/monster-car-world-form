@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className="flex items-center justify-center gap-1.5 mt-8 opacity-40 hover:opacity-70 transition-opacity">
+    <div className="flex items-center justify-center gap-1.5 mt-4 opacity-40 hover:opacity-70 transition-opacity">
       <span className="text-white text-xs">Made with</span>
       <span className="text-red-500 text-sm">♥</span>
       <span className="text-white text-xs">by</span>

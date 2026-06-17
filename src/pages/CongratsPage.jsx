@@ -26,7 +26,14 @@ function Coupon({ offer }) {
         <div className="bg-white px-6 py-6 text-center">
           <p className="text-black/40 text-[10px] uppercase tracking-widest font-semibold mb-3">You've won</p>
 
-          <div className="text-5xl mb-3">{offer.emoji}</div>
+          <div className="flex items-center justify-center mb-3 px-4">
+            <img
+              src={offer.logo}
+              alt="Partner logo"
+              className="h-14 max-w-[180px] object-contain"
+              style={{ mixBlendMode: 'multiply' }}
+            />
+          </div>
 
           <h2 className="text-black text-xl font-black uppercase tracking-wide leading-tight">
             {offer.name}

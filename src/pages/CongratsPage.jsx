@@ -170,7 +170,7 @@ export default function CongratsPage() {
             <span className="text-lg">📞</span> Call Now
           </a>
           <a
-            href={`https://wa.me/918866774656?text=${encodeURIComponent(`Hey Monster Team! 👋\n\nI'm ${name || 'a customer'} and I just received an exclusive offer coupon for *${offer.name}*.\n\nI'd like to confirm and avail this offer. Please let me know the next steps!\n\nThank you 🙏`)}`}
+            href={`https://wa.me/918866774656?text=${encodeURIComponent(`Hey Monster Team!\n\nI'm ${name || 'a customer'} and I just received an exclusive offer coupon for *${offer.name}*.\n\nI'd like to confirm and avail this offer. Please let me know the next steps!\n\nThank you`)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-2 bg-green-500 text-white font-black text-sm uppercase tracking-wide py-4 rounded-2xl active:scale-95 transition-all hover:bg-green-400 shadow-lg shadow-green-500/20"

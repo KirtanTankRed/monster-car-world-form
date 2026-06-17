@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
+import * as XLSX from 'xlsx'
 
 const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || 'admin123'
 
@@ -79,6 +80,21 @@ export default function AdminPage() {
     )
   }
 
+  function handleExport() {
+    const data = rows.map((r, i) => ({
+      '#': i + 1,
+      'Full Name': r.full_name,
+      'Phone': r.phone,
+      'Address': r.address,
+      'Offer': r.offer,
+      'Timestamp': formatDate(r.created_at),
+    }))
+    const ws = XLSX.utils.json_to_sheet(data)
+    const wb = XLSX.utils.book_new()
+    XLSX.utils.book_append_sheet(wb, ws, 'Submissions')
+    XLSX.writeFile(wb, `monster-submissions-${new Date().toISOString().slice(0,10)}.xlsx`)
+  }
+
   const filtered = rows.filter(r =>
     r.full_name?.toLowerCase().includes(search.toLowerCase()) ||
     r.phone?.includes(search) ||
@@ -108,8 +124,8 @@ export default function AdminPage() {
           </div>
         </div>
 
-        {/* Search */}
-        <div className="mb-4">
+        {/* Search + Export */}
+        <div className="mb-4 flex items-center gap-3 flex-wrap">
           <input
             type="text"
             value={search}
@@ -117,6 +133,14 @@ export default function AdminPage() {
             placeholder="Search by name, phone or offer…"
             className="w-full sm:w-72 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-white/20 text-sm outline-none focus:border-white/30 transition-all"
           />
+          {rows.length > 0 && (
+            <button
+              onClick={handleExport}
+              className="flex items-center gap-2 bg-white text-black text-xs font-bold uppercase tracking-widest px-4 py-2.5 rounded-xl hover:bg-white/90 active:scale-95 transition-all whitespace-nowrap"
+            >
+              ↓ Download Excel
+            </button>
+          )}
         </div>
 
         {/* Table */}

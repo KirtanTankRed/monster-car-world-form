@@ -39,6 +39,7 @@ export default function FormPage() {
     setLoading(false)
 
     if (error) {
+      console.error('Supabase insert error:', error)
       setSubmitError('Something went wrong. Please try again.')
       return
     }

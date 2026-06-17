@@ -132,12 +132,12 @@ export default function CongratsPage() {
         {/* Urgency banner */}
         <div className="bg-red-600/20 border border-red-500/50 rounded-2xl px-4 py-3 text-center mb-4 animate-pulse-glow">
           <p className="text-red-400 text-xs font-black uppercase tracking-widest">⚠️ Offer valid TODAY only</p>
-          <p className="text-white/70 text-xs mt-1">This offer <span className="text-red-400 font-bold">expires tonight</span> — confirm it right now before it's gone!</p>
+          <p className="text-white/70 text-xs mt-1">Hurry! Grab this deal while it lasts.</p>
         </div>
 
         {/* CTA prompt */}
         <p className="text-white/60 text-xs text-center mb-3 font-medium">
-          📲 Call or WhatsApp us <span className="text-white font-bold">immediately</span> to lock in your offer
+          📲 Call or WhatsApp us <span className="text-white font-bold">immediately</span> to confirm your offer
         </p>
 
         {/* Buttons */}

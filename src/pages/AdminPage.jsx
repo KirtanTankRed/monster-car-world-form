@@ -204,9 +204,9 @@ export default function AdminPage() {
                               : 'bg-white/5 border-white/10 text-white/30'
                             }`}
                         >
-                          <option value="">— Pending —</option>
-                          <option value="Call">Call</option>
-                          <option value="WhatsApp">WhatsApp</option>
+                          <option value="" style={{ background: '#1a1a1a', color: '#999' }}>— Pending —</option>
+                          <option value="Call" style={{ background: '#1a1a1a', color: '#93c5fd' }}>Call</option>
+                          <option value="WhatsApp" style={{ background: '#1a1a1a', color: '#86efac' }}>WhatsApp</option>
                         </select>
                       </td>
                       <td className="px-4 py-3">

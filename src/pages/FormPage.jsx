@@ -40,7 +40,11 @@ export default function FormPage() {
 
     if (error) {
       console.error('Supabase insert error:', error)
-      setSubmitError('Something went wrong. Please try again.')
+      if (error.code === '23505') {
+        setSubmitError('This phone number has already been registered.')
+      } else {
+        setSubmitError('Something went wrong. Please try again.')
+      }
       return
     }
 

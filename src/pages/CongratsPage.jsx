@@ -31,7 +31,6 @@ function Coupon({ offer }) {
               src={offer.logo}
               alt="Partner logo"
               className="h-14 max-w-[180px] object-contain"
-              style={{ mixBlendMode: 'multiply' }}
             />
           </div>
 

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useLocation, Navigate } from 'react-router-dom'
 import confetti from 'canvas-confetti'
+import Footer from '../components/Footer'
 
 function Coupon({ offer }) {
   return (
@@ -123,6 +124,7 @@ export default function CongratsPage() {
       <p className="text-white/20 text-xs text-center mt-8 animate-fade-in max-w-xs">
         Show this screen to our team member to redeem your offer.
       </p>
+      <Footer />
     </div>
   )
 }

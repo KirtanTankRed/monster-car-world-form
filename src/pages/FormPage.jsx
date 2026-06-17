@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { pickRandomOffer } from '../lib/offers'
+import Footer from '../components/Footer'
 
 export default function FormPage() {
   const navigate = useNavigate()
@@ -146,6 +147,7 @@ export default function FormPage() {
           </button>
         </form>
       </div>
+      <Footer />
     </div>
   )
 }

@@ -124,6 +124,9 @@ export default function CongratsPage() {
       <p className="text-white/20 text-xs text-center mt-8 animate-fade-in max-w-xs">
         Show this screen to our team member to redeem your offer.
       </p>
+      <p className="text-white/20 text-[10px] text-center mt-2 animate-fade-in">
+        * Terms &amp; Conditions apply
+      </p>
       <Footer />
     </div>
   )

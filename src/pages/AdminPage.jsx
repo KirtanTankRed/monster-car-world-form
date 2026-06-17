@@ -80,6 +80,15 @@ export default function AdminPage() {
     )
   }
 
+  async function handleConfirmation(id, value) {
+    await supabase.from('submissions').update({ confirmation: value || null }).eq('id', id)
+    setRows(prev => prev.map(r => r.id === id ? { ...r, confirmation: value || null } : r))
+  }
+
+  async function handleNotes(id, value) {
+    await supabase.from('submissions').update({ notes: value || null }).eq('id', id)
+  }
+
   function handleExport() {
     const data = rows.map((r, i) => ({
       '#': i + 1,
@@ -87,6 +96,8 @@ export default function AdminPage() {
       'Phone': r.phone,
       'Address': r.address,
       'Offer': r.offer,
+      'Confirmation': r.confirmation || '—',
+      'Notes': r.notes || '',
       'Timestamp': formatDate(r.created_at),
     }))
     const ws = XLSX.utils.json_to_sheet(data)
@@ -157,13 +168,15 @@ export default function AdminPage() {
                   <th className="text-left px-4 py-3 text-xs font-semibold uppercase tracking-widest text-white/40">Phone</th>
                   <th className="text-left px-4 py-3 text-xs font-semibold uppercase tracking-widest text-white/40">Address</th>
                   <th className="text-left px-4 py-3 text-xs font-semibold uppercase tracking-widest text-white/40">Offer</th>
+                  <th className="text-left px-4 py-3 text-xs font-semibold uppercase tracking-widest text-white/40">Confirmation</th>
+                  <th className="text-left px-4 py-3 text-xs font-semibold uppercase tracking-widest text-white/40">Notes</th>
                   <th className="text-left px-4 py-3 text-xs font-semibold uppercase tracking-widest text-white/40">Timestamp</th>
                 </tr>
               </thead>
               <tbody>
                 {filtered.length === 0 ? (
                   <tr>
-                    <td colSpan={6} className="text-center text-white/20 py-10 text-sm">
+                    <td colSpan={8} className="text-center text-white/20 py-10 text-sm">
                       {search ? 'No results found.' : 'No submissions yet.'}
                     </td>
                   </tr>
@@ -178,6 +191,32 @@ export default function AdminPage() {
                         <span className="inline-block bg-white/10 text-white text-xs px-2.5 py-1 rounded-full font-medium">
                           {row.offer}
                         </span>
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap">
+                        <select
+                          value={row.confirmation || ''}
+                          onChange={e => handleConfirmation(row.id, e.target.value)}
+                          className={`text-xs px-2.5 py-1.5 rounded-lg border outline-none cursor-pointer transition-all
+                            ${row.confirmation === 'Call'
+                              ? 'bg-blue-500/20 border-blue-500/40 text-blue-300'
+                              : row.confirmation === 'WhatsApp'
+                              ? 'bg-green-500/20 border-green-500/40 text-green-300'
+                              : 'bg-white/5 border-white/10 text-white/30'
+                            }`}
+                        >
+                          <option value="">— Pending —</option>
+                          <option value="Call">Call</option>
+                          <option value="WhatsApp">WhatsApp</option>
+                        </select>
+                      </td>
+                      <td className="px-4 py-3">
+                        <input
+                          type="text"
+                          defaultValue={row.notes || ''}
+                          onBlur={e => handleNotes(row.id, e.target.value)}
+                          placeholder="Add note…"
+                          className="w-40 bg-white/5 border border-white/10 rounded-lg px-2.5 py-1.5 text-white/70 placeholder-white/20 text-xs outline-none focus:border-white/30 transition-all"
+                        />
                       </td>
                       <td className="px-4 py-3 text-white/40 text-xs whitespace-nowrap">{formatDate(row.created_at)}</td>
                     </tr>

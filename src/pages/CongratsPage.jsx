@@ -127,13 +127,42 @@ export default function CongratsPage() {
       {/* Coupon */}
       <Coupon offer={offer} />
 
-      {/* Bottom note */}
-      <p className="text-white/20 text-xs text-center mt-8 animate-fade-in max-w-xs">
-        Show this screen to our team member to redeem your offer.
-      </p>
-      <p className="text-white/20 text-[10px] text-center mt-2 animate-fade-in">
-        * Terms &amp; Conditions apply
-      </p>
+      {/* Urgency + CTA */}
+      <div className="w-full max-w-sm mt-6 animate-slide-up">
+        {/* Urgency banner */}
+        <div className="bg-red-600/20 border border-red-500/50 rounded-2xl px-4 py-3 text-center mb-4 animate-pulse-glow">
+          <p className="text-red-400 text-xs font-black uppercase tracking-widest">⚠️ Offer valid TODAY only</p>
+          <p className="text-white/70 text-xs mt-1">This offer <span className="text-red-400 font-bold">expires tonight</span> — confirm it right now before it's gone!</p>
+        </div>
+
+        {/* CTA prompt */}
+        <p className="text-white/60 text-xs text-center mb-3 font-medium">
+          📲 Call or WhatsApp us <span className="text-white font-bold">immediately</span> to lock in your offer
+        </p>
+
+        {/* Buttons */}
+        <div className="flex gap-3">
+          <a
+            href="tel:+918866774656"
+            className="flex-1 flex items-center justify-center gap-2 bg-white text-black font-black text-sm uppercase tracking-wide py-4 rounded-2xl active:scale-95 transition-all hover:bg-white/90 shadow-lg shadow-white/10"
+          >
+            <span className="text-lg">📞</span> Call Now
+          </a>
+          <a
+            href="https://wa.me/918866774656"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 flex items-center justify-center gap-2 bg-green-500 text-white font-black text-sm uppercase tracking-wide py-4 rounded-2xl active:scale-95 transition-all hover:bg-green-400 shadow-lg shadow-green-500/20"
+          >
+            <span className="text-lg">💬</span> WhatsApp
+          </a>
+        </div>
+
+        <p className="text-white/20 text-[10px] text-center mt-4">
+          * Terms &amp; Conditions apply
+        </p>
+      </div>
+
       <Footer />
     </div>
   )

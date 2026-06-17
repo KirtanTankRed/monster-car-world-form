@@ -42,6 +42,28 @@ function Coupon({ offer }) {
             <p className="text-black/50 text-xs mt-1 italic">{offer.subtitle}</p>
           )}
 
+          {/* Offer details */}
+          {offer.details && (
+            <div className="mt-4 w-full">
+              <div className="flex items-center justify-center gap-4 bg-black/4 rounded-xl px-3 py-2.5 mb-2">
+                <div className="text-center">
+                  <p className="text-[8px] text-black/40 uppercase tracking-wider mb-0.5">You Save</p>
+                  <p className="text-green-600 font-black text-sm leading-none">{offer.details.saving}</p>
+                </div>
+                <div className="w-px h-8 bg-black/10" />
+                <div className="text-center">
+                  <p className="text-[8px] text-black/40 uppercase tracking-wider mb-0.5">Special Price</p>
+                  <p className="text-black font-black text-sm leading-none">{offer.details.final}/-</p>
+                </div>
+              </div>
+              <div className="space-y-1">
+                {offer.details.perks.map((perk, i) => (
+                  <p key={i} className="text-[10px] text-black/55 text-center">✓ {perk}</p>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="mt-4 py-2 px-4 bg-black/5 rounded-lg inline-block">
             <p className="text-black/40 text-[9px] uppercase tracking-widest">Valid at</p>
             <p className="text-black text-xs font-bold tracking-wide mt-0.5">Monster The Car World</p>
